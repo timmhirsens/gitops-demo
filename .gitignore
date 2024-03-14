@@ -1,0 +1,35 @@
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+**/.idea
+!.idea/icon_dark.png
+*.iws
+*.iml
+*.ipr
+
+**/target
+
+.java-version
+
+**/.terraform
+**/.terragrunt-cache
+.terraform.lock.hcl
+
+### VS Code ###
+**/.vscode/
+
+plan.txt
+terragrunt/*/providers.tf
+terragrunt/*/versions.tf
+terragrunt/*/graph.png
+terragrunt/*/globals.tf
+**/terragrunt-debug.tfvars.json
+**/terraform.tfstate
+**/terraform.tfstate.backup
