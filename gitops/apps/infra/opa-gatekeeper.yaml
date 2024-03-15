@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: opa-gatekeeper
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: gatekeeper
+    repoURL: https://open-policy-agent.github.io/gatekeeper/charts
+    targetRevision: 3.15.1
+    helm:
+      releaseName: gatekeeper
+      valuesObject:
+        controller:
+          publishService:
+            enable: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: gatekeeper-system
+
+  syncPolicy:
+      syncOptions:
+      - CreateNamespace=true
+      automated:
+        prune: true
+        selfHeal: true
+

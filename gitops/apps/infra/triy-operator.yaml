@@ -1,22 +1,24 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-of-apps
+  name: trivy-operator
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-
 spec:
   project: default
   source:
-   repoURL: git@github.com:timmhirsens/gitops-demo.git
-   targetRevision: HEAD
-   path: gitops/apps
-   directory:
-     recurse: true
+    chart: trivy-operator
+    repoURL: https://aquasecurity.github.io/helm-charts/
+    targetRevision: 0.21.4
+    helm:
+      releaseName: trivy-operator
+
   destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
+    server: "https://kubernetes.default.svc"
+    namespace: trivy-operator
+
   syncPolicy:
       syncOptions:
       - CreateNamespace=true

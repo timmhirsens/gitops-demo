@@ -17,10 +17,11 @@ resource "digitalocean_kubernetes_cluster" "haeger-demo-cluster" {
   # Grab the latest version slug from `doctl kubernetes options versions`
   version = "1.29.1-do.0"
 
+  destroy_all_associated_resources = true
+
   node_pool {
     name       = "worker-pool"
-    size       = "s-1vcpu-2gb"
+    size       = "s-2vcpu-4gb"
     node_count = 2
-
   }
 }
