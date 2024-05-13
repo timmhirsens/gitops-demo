@@ -14,7 +14,7 @@ spec:
     targetRevision: 0.21.4
     helm:
       releaseName: trivy-operator
-      valueObject:
+      valuesObject:
         serviceMonitor:
           # enabled determines whether a serviceMonitor should be deployed
           enabled: true
