@@ -21,7 +21,6 @@ spec:
         trivy:
           ignoreUnfixed: true
 
-
   destination:
     server: "https://kubernetes.default.svc"
     namespace: trivy-operator
