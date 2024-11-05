@@ -2,25 +2,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: website
+  name: team-website
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-   repoURL: git@github.com:timmhirsens/gitops-demo.git
-   targetRevision: HEAD
-   path: gitops/manifests/website
+    repoURL: https://github.com/timmhirsens/gitops-demo-team-website.git
+    targetRevision: HEAD
+    path: apps
 
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: website
+    namespace: argocd
 
   syncPolicy:
-      syncOptions:
+    syncOptions:
       - CreateNamespace=true
-      automated:
-        prune: true
-        selfHeal: true
-
+    automated:
+      prune: true
+      selfHeal: true
